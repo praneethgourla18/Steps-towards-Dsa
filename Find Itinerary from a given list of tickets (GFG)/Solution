@@ -1,0 +1,45 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class printItinerary
+{
+   public static void main(String[] args) 
+    { 
+        Map<String, String> dataSet = new HashMap<String, String>(); 
+        dataSet.put("Chennai", "Banglore"); 
+        dataSet.put("Bombay", "Delhi"); 
+        dataSet.put("Goa", "Chennai"); 
+        dataSet.put("Delhi", "Goa"); 
+  
+        String start=getStart(dataSet);
+        printOrder(dataSet,start);
+    } 
+    
+    static String getStart(Map<String, String> dataSet){
+        
+        
+        HashMap<String,String> rev=new HashMap<>();
+        
+        for(String key : dataSet.keySet()){
+            rev.put(dataSet.get(key),key);
+        }
+        
+        for(String key : dataSet.keySet()){
+             
+             if(rev.containsKey(key)==false){
+                 return key;
+             }
+        }
+        return null;
+    }
+    
+    static void printOrder(Map<String, String> dataSet,String start){
+        while(dataSet.containsKey(start)){
+            System.out.println(start);
+            start=dataSet.get(start);
+        }
+        System.out.println(start);
+    }
+	
+}
