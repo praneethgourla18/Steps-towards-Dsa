@@ -15,7 +15,7 @@ class Solution {
            suffix[i]=sum*nums[i];
            sum=suffix[i];
         }
-        nums[0]=suffix[0];
+        nums[0]=suffix[1];
         nums[nums.length-1]=prefix[nums.length-2];
         for(int i=1;i<nums.length-1;i++){
             nums[i]=prefix[i-1]*suffix[i+1];
