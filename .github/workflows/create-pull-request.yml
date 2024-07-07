@@ -1,0 +1,24 @@
+name: Create Pull Request
+
+on:
+  push:
+    branches:
+      - leethub-updates
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Create Pull Request
+      id: create_pull_request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        base: main
+        head: leethub-updates
+        title: "Automated PR: Update from LeetHub"
+        body: "This PR was created automatically by GitHub Actions."
