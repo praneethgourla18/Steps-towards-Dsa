@@ -1,26 +1,13 @@
 class Solution {
     public void reverseString(char[] s) {
-        reverseArr(s,0,s.length-1);
-    }
-    static void reverseArr(char[] s,int a,int b){
-        //TYPE --1
-//         if(a>b){
-//             return;
-//         }
-        
-//         char temp=s[a];
-//         s[a]=s[b];
-//         s[b]=temp;
-       
-//       reverseArr(s,a+1,b-1);
-// TYPE -2
-        while(a<=b){
-            char temp=s[a];
-            s[a]=s[b];
-            s[b]=temp;
-            
-            a++;
-            b--;
+        Stack<Character> st=new Stack<>();
+        for(int i=0;i<s.length;i++){
+            st.push(s[i]);
+        }
+        int j=0;
+        while(!st.isEmpty()){
+           s[j]=st.pop();
+           j++;
         }
     }
 }
