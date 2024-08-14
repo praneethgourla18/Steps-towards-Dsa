@@ -15,7 +15,7 @@ class Solution {
 
         // Populate the ans array based on the elements in arr
         for (int i = 0; i < arr.length; i++) {
-            ans[i] = map.getOrDefault(arr[i], -1);
+            ans[i] = map.get(arr[i]);
         }
 
         return ans;
