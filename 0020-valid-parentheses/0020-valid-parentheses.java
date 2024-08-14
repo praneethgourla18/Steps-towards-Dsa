@@ -9,6 +9,9 @@ class Solution {
                 st.push(s.charAt(i));
             }
             else{
+                 if(st.isEmpty()) {
+                    return false;
+                 }
                 char top=st.peek();
                 char c=s.charAt(i);
                 if((c == ')' && top == '(') ||
@@ -22,6 +25,6 @@ class Solution {
                 }
             }
         }
-        return true;
+        return st.isEmpty();
     }
 }
