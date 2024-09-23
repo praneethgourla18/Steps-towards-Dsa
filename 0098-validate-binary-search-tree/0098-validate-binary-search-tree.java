@@ -15,22 +15,17 @@
  */
 class Solution {
     public boolean isValidBST(TreeNode root) {
-        if(root==null){
+       
+       return helper(root,Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+    public boolean helper(TreeNode node,long min,long max){
+        if(node==null){
             return true;
         }
-        boolean lefans=true;
-        boolean rigans=true;
-        if(root.left!=null){
-           if(root.left.val>=root.val){
-               lefans=false;
-           }
+
+        if (node.val <= min || node.val >= max) {
+            return false;
         }
-        if(root.right!=null){
-            if(root.right.val<=root.val){
-                rigans=false;
-            }
-        }
-        
-        return(lefans && rigans && isValidBST(root.left) && isValidBST(root.right));
+        return helper(node.left,min,node.val) && helper(node.right,node.val,max);
     }
 }
