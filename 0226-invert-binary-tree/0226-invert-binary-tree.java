@@ -23,11 +23,8 @@ class Solution {
         }
         TreeNode left=invert(node.left);
         TreeNode right=invert(node.right);
-        if(node.left!=null || node.right!=null){
-           TreeNode temp=node.right;
-            node.right=node.left;
-            node.left=temp;
-        }
+        node.left=right;
+        node.right=left;
        return node;
     }
 }
