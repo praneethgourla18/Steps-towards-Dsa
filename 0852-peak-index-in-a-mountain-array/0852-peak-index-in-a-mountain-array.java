@@ -1,35 +1,19 @@
 class Solution {
     public int peakIndexInMountainArray(int[] arr) {
+        int start=0;
+        int end=arr.length-1;
+        int ans=-1;
+        while(start<=end){
+            int mid=start+(end-start)/2;
 
-        //BRUTE-FORCE O(N);
-    //     int max=arr[0];
-    //     int maxIdx=0;
-    //     for(int i=1;i<arr.length;i++){
-    //         if(arr[i]>max){
-    //             max=arr[i];
-    //             maxIdx=i;
-    //         }
-    //     }
-    //     return maxIdx ;
-    // }
-
-    int start=0;
-    int end=arr.length-1;
-
-    while(start<end){
-
-        int mid=start+ (end-start)/2;
-
-        if(arr[mid]>arr[mid+1]){
-            //you are in decreasing part
-
-            end=mid;
+            if(arr[mid]<arr[mid+1]){
+               start=mid+1;
+            }
+            else{
+                ans=mid;
+                end=mid-1;
+            }
         }
-        else if(arr[mid]<arr[mid+1]){
-            start=mid+1;
-        }
+        return ans;
     }
-    return start;
-
-}
 }
