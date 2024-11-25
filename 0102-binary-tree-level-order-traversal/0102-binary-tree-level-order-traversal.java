@@ -15,62 +15,32 @@
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        
         List<List<Integer>> list=new ArrayList<>();
-        
         if(root==null){
             return list;
         }
 
         Queue<TreeNode> queue=new LinkedList<>();
 
-        queue.offer(root);
+        queue.add(root);
 
         while(!queue.isEmpty()){
             List<Integer> res=new ArrayList<>();
-            int level=queue.size();
-            for(int i=0;i<level;i++){
-                TreeNode current=queue.poll();
-                res.add(current.val);
-                if(current.left!=null){
-                    queue.offer(current.left);
-                }
-                if(current.right!=null){
-                    queue.offer(current.right);
-                }
+
+            int levelSize=queue.size();
+
+            for(int i=0;i<levelSize;i++){
+               TreeNode current=queue.poll();
+               res.add(current.val);
+               if(current.left!=null){
+                  queue.add(current.left);
+               }
+               if(current.right!=null){
+                  queue.add(current.right);
+               }
             }
-         list.add(res);
+            list.add(res);
         }
-      return list;
+        return list;
     }
 }
-
-// public int levelOrderSuccessor(TreeNode root,TreeNode target) {
-        
-      
-//         if(root==null){
-//             return -1;
-//         }
-
-//         Queue<TreeNode> queue=new LinkedList<>();
-
-//         queue.offer(root);
-
-//         while(!queue.isEmpty()){
-            
-//                 TreeNode current=queue.poll();
-        
-//                 if(current.left!=null){
-//                     queue.offer(current.left);
-//                 }
-//                 if(current.right!=null){
-//                     queue.offer(current.right);
-//                 }
-
-//                 if(target==current){
-//                     return queue.peek() != null ? queue.peek().val : -1;
-//                 }
-         
-//         }
-//       return -1;
-//     }
