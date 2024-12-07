@@ -1,24 +1,11 @@
 class Solution {
-    public int singleNumber(int[] arr) {
-        int result=0;
-        for(int i=0;i<arr.length;i++){
-        result=result ^ arr[i];
+    public int singleNumber(int[] nums) {
+       int result = 0;
+        
+        for (int num : nums) {
+            result ^= num;
         }
+        
         return result;
-
-        // HashMap<Integer, Integer> map = new HashMap<>();
-        // for (int i = 0; i < arr.length; i++) {
-        //     if (map.containsKey(arr[i])) {
-        //         map.put(arr[i], map.get(arr[i]) + 1);
-        //     } else {
-        //         map.put(arr[i], 1);
-        //     }
-        // }
-        // for (int key : map.keySet()) {
-        //     if (map.get(key) == 1) {
-        //         return key;
-        //     }
-        // }
-        // return -1;
     }
 }
